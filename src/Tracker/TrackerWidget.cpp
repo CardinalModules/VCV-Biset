@@ -380,12 +380,14 @@ void TrackerWidget::appendContextMenu(Menu *menu) {
 	label->text = "Settings";
 	menu->addChild(label);
 
+#ifndef USING_CARDINAL_NOT_RACK
 	/// MIDI / KEYBOARD CHOICE
 	menu->addChild(rack::createSubmenuItem("Midi", "",
 		[=](Menu *menu) {
 			appendMidiMenu(menu, &(this->module->midi_input));
 		}
 	));
+#endif
 
 	/// RATE
 	param_rate = &(g_module->params[Tracker::PARAM_RATE]);
